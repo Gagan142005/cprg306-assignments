@@ -2,29 +2,29 @@
 import { useState } from "react";
 
 export default function NewItem() {
-  // Step 1: Set up state variables for each form field
+  
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState("produce");
 
-  // Step 2: Handle form submission
-  function handleSubmit(event) {
-    event.preventDefault(); // stop page refresh
 
-    // Create an object with the current form values
+  function handleSubmit(event) {
+    event.preventDefault(); 
+
+    
     const item = { name, quantity, category };
     console.log(item);
 
-    // Show an alert with the entered values
+    
     alert(`Item: ${name}\nQuantity: ${quantity}\nCategory: ${category}`);
 
-    // Reset form fields back to defaults
+  
     setName("");
     setQuantity(1);
     setCategory("produce");
   }
 
-  // Step 3: Handle quantity buttons
+
   function handleDecrease() {
     if (quantity > 1) {
       setQuantity(quantity - 1);
@@ -37,13 +37,13 @@ export default function NewItem() {
     }
   }
 
-  // Step 4: Display the form
+
   return (
     <form
       onSubmit={handleSubmit}
       className="bg-white rounded-lg p-6 shadow-lg w-80"
     >
-      {/* Item Name Field */}
+  
       <label className="block mb-2 text-gray-600">Item Name</label>
       <input
         type="text"
@@ -54,13 +54,13 @@ export default function NewItem() {
         className="w-full border border-gray-300 rounded-md px-3 py-2 mb-4"
       />
 
-      {/* Quantity Field */}
+  
       <label className="block mb-2 text-gray-600">Quantity (1–20)</label>
       <p className="text-gray-600">
         Current: <span className="font-bold text-gray-700">{quantity}</span>
       </p>
 
-      {/* Buttons to change quantity */}
+  
       <div className="flex items-center gap-2 my-2">
         <button
           type="button"
@@ -89,7 +89,7 @@ export default function NewItem() {
 
       <p className="text-sm text-gray-600 mb-4">Allowed range: 1–20</p>
 
-      {/* Category Field */}
+  
       <label className="block mb-2 text-gray-600">Category</label>
       <select
         value={category}
@@ -109,7 +109,7 @@ export default function NewItem() {
         <option value="other">Other</option>
       </select>
 
-      {/* Submit Button */}
+
       <button
         type="submit"
         className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-md"
