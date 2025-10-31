@@ -16,8 +16,8 @@ export default function Page() {
 
   function cleanItemName(name) {
     return name
-      .split(",")[0] // remove quantity details
-      .replace(/[^\p{L}\s]/gu, "") // remove emojis and extra symbols
+      .split(",")[0] 
+      .replace(/[^\p{L}\s]/gu, "") 
       .trim();
   }
 

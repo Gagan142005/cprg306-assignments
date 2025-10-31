@@ -49,7 +49,7 @@ export default function ItemList({ items, onItemSelect }) {
             name={item.name}
             quantity={item.quantity}
             category={item.category}
-            onSelect={() => onItemSelect(item)} // Added click handler
+            onSelect={() => onItemSelect(item)}
           />
         ))}
       </ul>
