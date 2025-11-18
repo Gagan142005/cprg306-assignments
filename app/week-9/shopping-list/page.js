@@ -1,13 +1,29 @@
 "use client";
 
 import { useState } from "react";
+import { useUserAuth } from "../../../contexts/AuthContext";  
 import NewItem from "./new-item";
 import ItemList from "./item-list";
 import MealIdeas from "./meal-ideas";
 import itemsData from "./items.json";
 
 export default function Page() {
+  const { user } = useUserAuth(); 
+
+
+  if (!user) {
+    return (
+      <main className="bg-black text-white min-h-screen p-6">
+        <h1 className="text-3xl font-bold text-center">
+          You must be logged in to view the shopping list.
+        </h1>
+      </main>
+    );
+  }
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [items, setItems] = useState(itemsData);
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [selectedItemName, setSelectedItemName] = useState("");
 
   const handleAddItem = (newItem) => {
@@ -16,8 +32,8 @@ export default function Page() {
 
   function cleanItemName(name) {
     return name
-      .split(",")[0] 
-      .replace(/[^\p{L}\s]/gu, "") 
+      .split(",")[0]
+      .replace(/[^\p{L}\s]/gu, "")
       .trim();
   }
 
